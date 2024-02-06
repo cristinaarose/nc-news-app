@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 
+import { getCommentsByArticleId } from "../../api";
+
 export default function CommentManager({ article_id }) {
   const [comments, setComments] = useState();
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(
-      `https://news-app-n80t.onrender.com/api/articles/${article_id}/comments`
-    )
+    getCommentsByArticleId({ article_id })
       .then((data) => {
-        return data.json();
-      })
-      .then((body) => {
-        setComments(body);
-
+        setComments(data.data);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setError({ err });
       });
   }, []);
 
-  if (isLoading) return <p>Loading....</p>;
+  if (comments && comments.comments.length === 0)
+    return <p>Be the first to comment!</p>;
+
+  if (isLoading) return <p>Loading...</p>;
   else {
     return <CommentList comments={comments} />;
   }
