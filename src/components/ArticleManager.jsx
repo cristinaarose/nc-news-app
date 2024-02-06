@@ -7,6 +7,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import CommentManager from "./CommentManager";
 
 export default function ArticleManager() {
   const [selectedArticle, setSelectedArticle] = useState();
@@ -49,8 +50,7 @@ export default function ArticleManager() {
         </section>
         <p></p>
         <section className="centre">
-          <p>Comments: {selectedArticle.article.comment_count}</p>
-          <p> comments will go here!</p>
+          <CommentManager article_id={article_id} />
         </section>
       </>
     );
