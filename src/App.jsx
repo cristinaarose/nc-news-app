@@ -1,5 +1,8 @@
 import Header from "./components/Header";
 import ArticleList from "./components/ArticleList";
+import ArticleCard from "./components/ArticleCard";
+import ArticleManager from "./components/ArticleManager";
+
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -31,6 +34,14 @@ function App() {
             element={
               <>
                 <Header /> <ArticleList articles={articles} />
+              </>
+            }
+          />
+          <Route
+            path="/articles/:article_id"
+            element={
+              <>
+                <Header /> <ArticleManager />
               </>
             }
           />

@@ -1,6 +1,6 @@
-export default function ArticleCard({ articles }) {
-  //   console.log(articles, "ARTICLES");
+import { Link } from "react-router-dom";
 
+export default function ArticleCard({ articles }) {
   return (
     <div>
       {articles.articles &&
@@ -11,12 +11,15 @@ export default function ArticleCard({ articles }) {
               <img className="image" src={article.article_img_url} />
               <p>Author: {article.author}</p>
               <p>Title: {article.title}</p>
-              <p>Article id: {article.article_id}</p>
               <p>Topic: {article.topic}</p>
               <p>Created at: {article.created_at}</p>
               <p>Votes: {article.votes}</p>
               <p>Comment count: {article.comment_count}</p>
-              <button>View</button>
+              <p>
+                <Link to={`/articles/${article.article_id}`}>
+                  Link to Article: {i + 1}
+                </Link>
+              </p>
             </li>
           );
         })}
