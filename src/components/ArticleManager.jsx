@@ -1,31 +1,25 @@
-// header
-// nav bar
-// article card
-// comment manager > comment card
-// votes
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import CommentManager from "./CommentManager";
+import { getArticleByArticleId } from "../../api";
 
 export default function ArticleManager() {
   const [selectedArticle, setSelectedArticle] = useState();
   const { article_id } = useParams();
 
+  const [error, setError] = useState(null);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://news-app-n80t.onrender.com/api/articles/${article_id}`)
+    getArticleByArticleId({ article_id })
       .then((data) => {
-        return data.json();
-      })
-      .then((body) => {
-        setSelectedArticle(body);
+        setSelectedArticle(data.data);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setError({ err });
       });
   }, []);
 

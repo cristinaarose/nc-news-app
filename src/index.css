@@ -79,4 +79,19 @@ button:focus-visible {
   width: 50%;
   padding: 10px;
   text-align: center;
+  margin: 10px;
+}
+
+.navbar {
+  background-color: rgb(177, 177, 177);
+  padding: 2%;
+  text-align: center;
+}
+
+.link {
+  padding: 10px;
+}
+
+h1 {
+  font-family: "Luminari", fantasy;
 }
