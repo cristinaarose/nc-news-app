@@ -26,3 +26,24 @@ export function getArticleByArticleId({ article_id }) {
       return res;
     });
 }
+
+//"PATCH api/articles/article_id" patches votes
+export function patchArticleVotes({ article_id }) {
+  return axios
+    .patch(`https://news-app-n80t.onrender.com/api/articles/${article_id}`, {
+      inc_votes: 1,
+    })
+    .then((res) => {
+      return res;
+    });
+}
+
+export function patchArticleVotesDown({ article_id }) {
+  return axios
+    .patch(`https://news-app-n80t.onrender.com/api/articles/${article_id}`, {
+      inc_votes: -1,
+    })
+    .then((res) => {
+      return res;
+    });
+}
