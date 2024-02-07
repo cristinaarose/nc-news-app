@@ -2,11 +2,16 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import CommentManager from "./CommentManager";
-import { getArticleByArticleId } from "../../api";
+import {
+  getArticleByArticleId,
+  patchArticleVotes,
+  patchArticleVotesDown,
+} from "../../api";
 
 export default function ArticleManager() {
   const [selectedArticle, setSelectedArticle] = useState();
   const { article_id } = useParams();
+  const [votes, setVotes] = useState();
 
   const [error, setError] = useState(null);
 
@@ -16,6 +21,8 @@ export default function ArticleManager() {
     getArticleByArticleId({ article_id })
       .then((data) => {
         setSelectedArticle(data.data);
+        setVotes(data.data.article.votes);
+
         setIsLoading(false);
       })
       .catch((err) => {
@@ -23,8 +30,34 @@ export default function ArticleManager() {
       });
   }, []);
 
-  if (isLoading) return <p>Loading....</p>;
-  else {
+  function handleUpClick() {
+    patchArticleVotes({ article_id }, 1)
+      .then(() => {
+        setError(null);
+      })
+      .catch((error) => {
+        setError(error);
+        setVotes(selectedArticle.article.votes - 1);
+      });
+    setVotes(votes + 1);
+  }
+
+  function handleDownClick() {
+    patchArticleVotesDown({ article_id }, -1)
+      .then(() => {
+        setError(null);
+      })
+      .catch((error) => {
+        setError(error);
+        setVotes(selectedArticle.article.votes - 1);
+      });
+    setVotes(votes - 1);
+  }
+
+  if (isLoading) {
+    return <p>Loading....</p>;
+  } else {
+    const date = new Date(`${selectedArticle.article.created_at}`);
     return (
       <>
         <section className="centre">
@@ -35,12 +68,14 @@ export default function ArticleManager() {
           <h2> Title: {selectedArticle.article.title}</h2>
           <p> Author: {selectedArticle.article.author}</p>
           <p>Topic: {selectedArticle.article.topic}</p>
-          <p>Created at: {selectedArticle.article.created_at}</p>
+          <p>Created at: {String(date)}</p>
         </section>
         <p></p>
         <section className="centre">
-          <h3>Votes: {selectedArticle.article.votes}</h3>
-          <button>vote!</button>
+          <h3>Votes: {votes}</h3>
+
+          <button onClick={handleUpClick}>vote👍</button>
+          <button onClick={handleDownClick}>vote👎</button>
         </section>
         <p></p>
         <section className="centre">
