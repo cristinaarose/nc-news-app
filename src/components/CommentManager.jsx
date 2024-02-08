@@ -33,7 +33,7 @@ export default function CommentManager({ article_id }) {
     setNewComment({
       ...newComment,
       [property]: e.target.value,
-      ["author"]: "jessjelly", //loggedInUser.username,
+      ["author"]: loggedInUser.username,
     });
   }
 

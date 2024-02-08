@@ -26,7 +26,6 @@ export function getArticleByArticleId({ article_id }) {
     });
 }
 
-//"PATCH api/articles/article_id" patches votes
 export function patchArticleVotes({ article_id }) {
   return axios
     .patch(`https://news-app-n80t.onrender.com/api/articles/${article_id}`, {
@@ -48,8 +47,6 @@ export function patchArticleVotesDown({ article_id }) {
 }
 
 export function postCommentByArticleId({ article_id }, newComment) {
-  console.log("type article num", article_id);
-  console.log("newcomment is", newComment);
   return axios
     .post(
       `https://news-app-n80t.onrender.com/api/articles/${article_id}/comments`,
@@ -63,6 +60,14 @@ export function postCommentByArticleId({ article_id }, newComment) {
 export function getAllUsers() {
   return axios
     .get(`https://news-app-n80t.onrender.com/api/users`)
+    .then((res) => {
+      return res;
+    });
+}
+
+export function deleteComment(comment_id) {
+  return axios
+    .delete(`https://news-app-n80t.onrender.com/api/comments/${comment_id}`)
     .then((res) => {
       return res;
     });
