@@ -4,10 +4,12 @@ import ArticleManager from "./components/ArticleManager";
 import Error from "./components/Error";
 import Homepage from "./components/Homepage";
 import NavBar from "./components/NavBar";
+import UserManager from "./components/UserManager";
 
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getAllArticles } from "../api";
+import { UserProvider } from "./components/UserProvider";
 
 function App() {
   const [articles, setArticles] = useState();
@@ -32,7 +34,7 @@ function App() {
   if (isLoading) return <p>Loading....</p>;
   else {
     return (
-      <>
+      <UserProvider>
         <Header />
         <NavBar />
         <Routes>
@@ -53,8 +55,16 @@ function App() {
               </>
             }
           />
+          <Route
+            path="/users"
+            element={
+              <>
+                <UserManager />
+              </>
+            }
+          />
         </Routes>
-      </>
+      </UserProvider>
     );
   }
 }
