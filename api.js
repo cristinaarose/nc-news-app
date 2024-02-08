@@ -7,7 +7,6 @@ export function getAllArticles() {
       return res;
     });
 }
-// getArtcielByID(article_id);
 
 export function getCommentsByArticleId({ article_id }) {
   return axios
@@ -43,6 +42,27 @@ export function patchArticleVotesDown({ article_id }) {
     .patch(`https://news-app-n80t.onrender.com/api/articles/${article_id}`, {
       inc_votes: -1,
     })
+    .then((res) => {
+      return res;
+    });
+}
+
+export function postCommentByArticleId({ article_id }, newComment) {
+  console.log("type article num", article_id);
+  console.log("newcomment is", newComment);
+  return axios
+    .post(
+      `https://news-app-n80t.onrender.com/api/articles/${article_id}/comments`,
+      newComment
+    )
+    .then((res) => {
+      return res;
+    });
+}
+
+export function getAllUsers() {
+  return axios
+    .get(`https://news-app-n80t.onrender.com/api/users`)
     .then((res) => {
       return res;
     });
