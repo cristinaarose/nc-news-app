@@ -2,11 +2,8 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import CommentManager from "./CommentManager";
-import {
-  getArticleByArticleId,
-  patchArticleVotes,
-  patchArticleVotesDown,
-} from "../../api";
+import VoteManager from "./VoteManager";
+import { getArticleByArticleId } from "../../api";
 
 export default function ArticleManager() {
   const [selectedArticle, setSelectedArticle] = useState();
@@ -30,30 +27,6 @@ export default function ArticleManager() {
       });
   }, []);
 
-  function handleUpClick() {
-    patchArticleVotes({ article_id }, 1)
-      .then(() => {
-        setError(null);
-      })
-      .catch((error) => {
-        setError(error);
-        setVotes(selectedArticle.article.votes - 1);
-      });
-    setVotes(votes + 1);
-  }
-
-  function handleDownClick() {
-    patchArticleVotesDown({ article_id }, -1)
-      .then(() => {
-        setError(null);
-      })
-      .catch((error) => {
-        setError(error);
-        setVotes(selectedArticle.article.votes - 1);
-      });
-    setVotes(votes - 1);
-  }
-
   if (isLoading) {
     return <p>Loading....</p>;
   } else {
@@ -72,10 +45,13 @@ export default function ArticleManager() {
         </section>
         <p></p>
         <section className="centre">
-          <h3>Votes: {votes}</h3>
-
-          <button onClick={handleUpClick}>vote👍</button>
-          <button onClick={handleDownClick}>vote👎</button>
+          <VoteManager
+            article_id={article_id}
+            setVotes={setVotes}
+            votes={votes}
+            setError={setError}
+            selectedArticle={selectedArticle}
+          />
         </section>
         <p></p>
         <section className="centre">
