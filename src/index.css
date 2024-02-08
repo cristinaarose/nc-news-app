@@ -95,3 +95,16 @@ button:focus-visible {
 h1 {
   font-family: "Luminari", fantasy;
 }
+
+.border {
+  border: 5px solid;
+  margin: auto;
+
+  padding: 10px;
+
+  margin: 10px;
+}
+
+.deleted {
+  color: rgb(157, 154, 154);
+}
