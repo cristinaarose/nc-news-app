@@ -19,11 +19,17 @@ export default function CommentCard({ comments }) {
         setError(error);
       });
   }
+  console.log(comments.comments);
+  let clonedComments = [...comments.comments];
+
+  let commentsFiltered = clonedComments.filter((comment) => {
+    return comment.comment_id !== deletedCommentId;
+  });
 
   return (
     <div>
-      {comments.comments &&
-        comments.comments.map((comment, i) => {
+      {commentsFiltered &&
+        commentsFiltered.map((comment, i) => {
           const date = new Date(`${comment.created_at}`);
 
           return (

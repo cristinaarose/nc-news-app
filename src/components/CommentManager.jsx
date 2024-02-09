@@ -16,6 +16,7 @@ export default function CommentManager({ article_id }) {
   });
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
 
   useEffect(() => {
     getCommentsByArticleId({ article_id })
@@ -39,22 +40,26 @@ export default function CommentManager({ article_id }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setComments((c) => {
-      c.comments.unshift(newComment);
+    setComments((currentComments) => {
+      currentComments.comments.unshift(newComment);
 
-      return c;
+      return currentComments;
     });
-
-    postCommentByArticleId({ article_id }, newComment)
-      .then(() => {
-        setError(null);
-      })
-      .catch((error) => {
-        setError(error);
-      });
-    setIsSuccess(true);
-    newComment.body = "";
+    if (newComment.body === "") {
+      setIsEmpty(true);
+    } else {
+      postCommentByArticleId({ article_id }, newComment)
+        .then(() => {
+          setError(null);
+        })
+        .catch((error) => {
+          setError(error);
+        });
+      setIsSuccess(true);
+      newComment.body = "";
+    }
   }
+
   if (comments && comments.comments.length === 0)
     return <p>Be the first to comment!</p>;
 
@@ -62,22 +67,22 @@ export default function CommentManager({ article_id }) {
   else {
     return (
       <>
-        {/* <p>LOGGED IN USER = {loggedInUser}</p> */}
-        <CommentList comments={comments} newComment={newComment} />
         <form
           onSubmit={(e) => {
             handleSubmit(e);
           }}
         >
           <label htmlFor="body">Post a comment!</label>
-          <input
+          <textarea
             type="text"
             value={newComment.body}
             onChange={(e) => handleChange(e, "body")}
           />
-          <button type="submit">Submit!</button>
+          {isEmpty === false ? <button type="submit">Submit!</button> : null}
+
           {isSuccess === true ? <p>Submitted✅</p> : null}
         </form>
+        <CommentList comments={comments} newComment={newComment} />
       </>
     );
   }
