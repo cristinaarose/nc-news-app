@@ -8,18 +8,32 @@ import UserManager from "./components/UserManager";
 
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getAllArticles } from "../api";
+import { getAllArticles, getAllTopics } from "../api";
 import { UserProvider } from "./components/UserProvider";
+import TopicList from "./components/TopicList";
 
 function App() {
   const [articles, setArticles] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [topics, setTopics] = useState();
 
   useEffect(() => {
     getAllArticles()
       .then((data) => {
         setArticles(data.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError({ err });
+      });
+  }, []);
+
+  useEffect(() => {
+    getAllTopics()
+      .then((data) => {
+        setTopics(data.data);
+
         setIsLoading(false);
       })
       .catch((err) => {
@@ -60,6 +74,14 @@ function App() {
             element={
               <>
                 <UserManager />
+              </>
+            }
+          />
+          <Route
+            path="/topics"
+            element={
+              <>
+                <TopicList topics={topics} />
               </>
             }
           />
