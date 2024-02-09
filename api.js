@@ -72,3 +72,18 @@ export function deleteComment(comment_id) {
       return res;
     });
 }
+export function getArticlesByTopic({ topicQuery }) {
+  return axios
+    .get(`https://news-app-n80t.onrender.com/api/articles?topic=${topicQuery}`)
+    .then((res) => {
+      return res;
+    });
+}
+
+export function getAllTopics() {
+  return axios
+    .get("https://news-app-n80t.onrender.com/api/topics")
+    .then((res) => {
+      return res;
+    });
+}

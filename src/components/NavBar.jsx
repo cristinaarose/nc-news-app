@@ -18,6 +18,9 @@ export default function NavBar() {
         <Link className="link" to={"/users"}>
           Users
         </Link>
+        <Link className="link" to={"/topics"}>
+          Topics
+        </Link>
         <p>Logged in as: {loggedInUser.username}</p>
       </span>
     </nav>
