@@ -4,7 +4,7 @@ import { UserContext } from "./UserProvider";
 
 export default function NavBar() {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
-
+  console.log(loggedInUser, "<<<<<");
   return (
     <nav className="navbar">
       <span>
