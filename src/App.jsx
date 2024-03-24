@@ -52,7 +52,7 @@ function App() {
         <Header />
         <NavBar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<><Homepage /> </>} />
           <Route
             path="/articles"
             element={

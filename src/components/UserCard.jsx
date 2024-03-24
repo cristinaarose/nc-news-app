@@ -6,7 +6,7 @@ export default function UserCard({ users }) {
           return (
             <li key={i}>
               <h3>User: {user.username}</h3>
-              <img className="image" src={user.article_img_url} />
+              <img className="image" src={user.avatar_url} />
               <p>Name: {user.name}</p>
             </li>
           );
