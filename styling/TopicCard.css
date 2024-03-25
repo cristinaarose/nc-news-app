@@ -10,13 +10,6 @@
   margin: 10px;
 }
 
-.image {
-  width: 200px;
-  height: 200px;
-  text-align: left;
-  border-radius: 30px;
-}
-
 .list {
   list-style-type: none;
   list-style: none;

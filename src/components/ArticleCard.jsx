@@ -11,7 +11,7 @@ export default function ArticleCard({ articles }) {
             <>
               <div className="flex-container">
                 <div>
-                  <img className="image" src={article.article_img_url} />
+                  <img className="articleImage" src={article.article_img_url} />
                 </div>
 
                 <section>

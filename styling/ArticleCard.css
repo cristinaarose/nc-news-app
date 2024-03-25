@@ -1,7 +1,7 @@
 .centre {
   list-style-type: none;
   list-style: none;
-  background-color: rgba(146, 41, 41, 0.245);
+  background-color: rgba(255, 255, 255, 0.245);
   /* border-radius: 30px; */
   margin: auto;
   width: 97%;
@@ -47,8 +47,6 @@
 .flex-container > div {
   width: 200px;
   height: 200px;
-
-  /* text-align: center; */
 }
 
 .flex-container > section {
@@ -63,4 +61,10 @@
   text-align: left;
   color: black;
   margin: 0px;
+}
+
+.articleImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 30%;
 }
