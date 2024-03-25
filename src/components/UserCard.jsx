@@ -12,8 +12,9 @@ export default function UserCard({ users }) {
                   <img className="avatar" src={user.avatar_url} />
                 </div>
                 <section>
-                  <h3>{user.username}</h3>
+                  <h3 className="heading">{user.username}</h3>
                   <p>Name: {user.name}</p>
+                  <button className="button">Login as me!</button>
                 </section>
               </div>
             </>
