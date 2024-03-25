@@ -11,7 +11,7 @@ export default function TopicCard({ topics }) {
               <div className="flex-container-topic">
                 <div>
                   <Link to={`/articles?topic=${topic.slug}`}>
-                    <h3 className="heading">{topic.slug}</h3>
+                    <h3 className="heading-topic">{topic.slug}</h3>
                   </Link>
                 </div>
                 <section>
