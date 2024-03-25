@@ -9,12 +9,17 @@ export default function ArticleCard({ articles }) {
           const date = new Date(`${article.created_at}`);
           return (
             <>
-              <ul key={i} className="centre">
-                <img className="image" src={article.article_img_url} />
+              <div className="flex-container">
+                <div>
+                  <img className="image" src={article.article_img_url} />
+                </div>
 
-                <li className="list">
-                  <Link className="list" to={`/articles/${article.article_id}`}>
-                    <h2>Title: {article.title}</h2>
+                <section>
+                  <Link
+                    className="heading"
+                    to={`/articles/${article.article_id}`}
+                  >
+                    <h2 className="heading">{article.title}</h2>
                   </Link>
                   <p>Author: {article.author}</p>
 
@@ -24,9 +29,9 @@ export default function ArticleCard({ articles }) {
 
                   <p>Votes: {article.votes}</p>
 
-                  <p>Comment count: {article.comment_count}</p>
-                </li>
-              </ul>
+                  <p>Comments: {article.comment_count}</p>
+                </section>
+              </div>
             </>
           );
         })}

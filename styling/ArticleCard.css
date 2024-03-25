@@ -2,7 +2,7 @@
   list-style-type: none;
   list-style: none;
   background-color: rgba(146, 41, 41, 0.245);
-  border-radius: 30px;
+  /* border-radius: 30px; */
   margin: auto;
   width: 97%;
   padding: 10px;
@@ -10,18 +10,57 @@
   margin: 10px;
 }
 
-.image {
-  width: 200px;
-  height: 200px;
-  text-align: left;
-  border-radius: 30px;
+/* .articleContainer {
+  display: flex;
+  flex-direction: horizontal;
 }
 
+.imageContainer {
+  height: 310px;
+  width: 310px;
+  justify-content: space-between;
+}
+
+.image {
+  border: solid;
+  height: 500px;
+  width: 500px;
+} */
+
 .list {
-  list-style-type: none;
-  list-style: none;
-  display: inline;
-  text-align: centre;
   padding: 0px;
+  margin: 0px;
+  /* text-align: left; */
+}
+
+/* .unorderedList {
+  width: 2000px;
+  height: 310px;
+} */
+
+.flex-container {
+  display: flex;
+  flex-direction: horizontal;
+  padding: 5px;
+}
+
+.flex-container > div {
+  width: 200px;
+  height: 200px;
+
+  /* text-align: center; */
+}
+
+.flex-container > section {
+  width: 2000px;
+  height: 200px;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.heading {
+  text-align: left;
+  color: black;
   margin: 0px;
 }
