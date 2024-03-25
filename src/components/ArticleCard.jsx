@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../../styling/ArticleCard.css";
 
 export default function ArticleCard({ articles }) {
   return (
@@ -7,18 +8,31 @@ export default function ArticleCard({ articles }) {
         articles.articles.map((article, i) => {
           const date = new Date(`${article.created_at}`);
           return (
-            <li key={i} className="centre">
-              <h3>Article {i + 1}</h3>
-              <img className="image" src={article.article_img_url} />
-              <Link to={`/articles/${article.article_id}`}>
-                <p>Title: {article.title}</p>
-              </Link>
-              <p>Author: {article.author}</p>
-              <p>Topic: {article.topic}</p>
-              <p>Created at: {String(date)}</p>
-              <p>Votes: {article.votes}</p>
-              <p>Comment count: {article.comment_count}</p>
-            </li>
+            <>
+              <div className="flex-container">
+                <div>
+                  <img className="articleImage" src={article.article_img_url} />
+                </div>
+
+                <section>
+                  <Link
+                    className="heading"
+                    to={`/articles/${article.article_id}`}
+                  >
+                    <h2 className="heading">{article.title}</h2>
+                  </Link>
+                  <p>Author: {article.author}</p>
+
+                  <p>Topic: {article.topic}</p>
+
+                  <p>Created at: {String(date)}</p>
+
+                  <p>Votes: {article.votes}</p>
+
+                  <p>Comments: {article.comment_count}</p>
+                </section>
+              </div>
+            </>
           );
         })}
     </div>

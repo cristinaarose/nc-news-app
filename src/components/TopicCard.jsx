@@ -1,18 +1,24 @@
 import { Link } from "react-router-dom";
+import "../../styling/TopicCard.css";
+
 export default function TopicCard({ topics }) {
   return (
-    <div>
+    <div className="list">
       {topics.topics &&
         topics.topics.map((topic, i) => {
           return (
-            <li key={i} className="centre">
-              <h3>Topic {i + 1}</h3>
-
-              <Link to={`/articles?topic=${topic.slug}`}>
-                <p>Topic: {topic.slug}</p>
-              </Link>
-              <p>Description: {topic.description}</p>
-            </li>
+            <>
+              <div className="flex-container-topic">
+                <div>
+                  <Link to={`/articles?topic=${topic.slug}`}>
+                    <h3 className="heading-topic">{topic.slug}</h3>
+                  </Link>
+                </div>
+                <section>
+                  <p>Description: {topic.description}</p>
+                </section>
+              </div>
+            </>
           );
         })}
     </div>

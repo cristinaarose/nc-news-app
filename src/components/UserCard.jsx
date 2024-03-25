@@ -1,14 +1,23 @@
+import "../../styling/UserCard.css";
+
 export default function UserCard({ users }) {
   return (
     <div>
       {users.users &&
         users.users.map((user, i) => {
           return (
-            <li key={i}>
-              <h3>User: {user.username}</h3>
-              <img className="image" src={user.article_img_url} />
-              <p>Name: {user.name}</p>
-            </li>
+            <>
+              <div className="flex-container-user">
+                <div>
+                  <img className="avatar" src={user.avatar_url} />
+                </div>
+                <section>
+                  <h3 className="heading">{user.username}</h3>
+                  <p>Name: {user.name}</p>
+                  <button className="button">Login as me!</button>
+                </section>
+              </div>
+            </>
           );
         })}
     </div>

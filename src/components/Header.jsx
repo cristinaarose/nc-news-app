@@ -1,3 +1,4 @@
+import "../../styling/Header.css"
 export default function Header() {
-  return <h1>📰 News App 📰</h1>;
+  return <h1 className="header">📰 NC NEWS </h1>;
 }

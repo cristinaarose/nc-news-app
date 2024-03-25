@@ -5,6 +5,7 @@ import CommentManager from "./CommentManager";
 import VoteManager from "./VoteManager";
 import { getArticleByArticleId } from "../../api";
 import TopicManager from "./TopicManager";
+import "../../styling/ArticleManager.css"
 
 export default function ArticleManager() {
   const [selectedArticle, setSelectedArticle] = useState();
