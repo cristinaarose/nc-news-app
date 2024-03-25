@@ -7,7 +7,7 @@ export default function UserCard({ users }) {
         users.users.map((user, i) => {
           return (
             <>
-              <div className="flex-container">
+              <div className="flex-container-user">
                 <div>
                   <img className="avatar" src={user.avatar_url} />
                 </div>

@@ -16,3 +16,27 @@
   display: inline;
   text-align: right;
 }
+
+.flex-container-topic {
+  display: flex;
+  flex-direction: horizontal;
+  padding: 0px;
+}
+
+.flex-container-topic > div {
+  width: 100px;
+  height: 50px;
+}
+
+.flex-container-topic > section {
+  width: 2000px;
+  height: 50px;
+  padding: 0px;
+  text-align: left;
+  font-size: 14px;
+}
+.heading {
+  text-align: left;
+  color: black;
+  margin: 10px;
+}

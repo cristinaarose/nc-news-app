@@ -7,12 +7,18 @@ export default function TopicCard({ topics }) {
       {topics.topics &&
         topics.topics.map((topic, i) => {
           return (
-            <li key={i} className="centre">
-              <Link to={`/articles?topic=${topic.slug}`}>
-                <h3>{topic.slug}</h3>
-              </Link>
-              <p>Description: {topic.description}</p>
-            </li>
+            <>
+              <div className="flex-container-topic">
+                <div>
+                  <Link to={`/articles?topic=${topic.slug}`}>
+                    <h3 className="heading">{topic.slug}</h3>
+                  </Link>
+                </div>
+                <section>
+                  <p>Description: {topic.description}</p>
+                </section>
+              </div>
+            </>
           );
         })}
     </div>
