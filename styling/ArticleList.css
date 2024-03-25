@@ -3,3 +3,22 @@
   margin: 0px;
   list-style-type: none;
 }
+
+.flex-container-articleList {
+  display: flex;
+  flex-direction: horizontal;
+  padding: 5px;
+}
+
+.flex-container-article-List > div {
+  width: 200px;
+  height: 200px;
+}
+
+.flex-container-articleList > section {
+  width: 2000px;
+  height: 200px;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}

@@ -14,6 +14,46 @@ export default function ArticleList({ articles }) {
     return (
       <>
         <h2> Article list: </h2>
+        {/* topic select */}
+        <div className="flex-container-articleList">
+          <div>
+            <span>
+              <p>Topic:</p>
+              <select>
+                <option value="coding">Coding</option>
+
+                <option value="football">Football</option>
+
+                <option value="cooking">Cooking</option>
+              </select>
+            </span>
+          </div>
+          {/* order by asc/desc */}
+          <div>
+            <span>
+              <p>Order by:</p>
+              <select>
+                <option value="asc">Ascending</option>
+
+                <option value="desc">Descending</option>
+              </select>
+            </span>
+          </div>
+          {/* Sort by */}
+          <div>
+            <span>
+              <p>Sort by:</p>
+              <select>
+                <option value="author">Author</option>
+
+                <option value="votes">Votes</option>
+
+                <option value="created_at">Date created</option>
+              </select>
+            </span>
+          </div>
+        </div>
+
         <ul className="ul">
           {articles && articles.articles && <ArticleCard articles={articles} />}
         </ul>
